@@ -42,9 +42,9 @@ const Page = () => {
         ].map(item => ({...item, data: item.data.map((movie: MovieProps) => ({...movie, type: "movie", addedToFavorites: false}))}))
 
         setMoviesData(allResult)
-      }catch (e) {
+      } catch (e) {
         console.log(e)
-      }finally {
+      } finally {
         setPageLoader(false)
       }
     }
@@ -52,11 +52,11 @@ const Page = () => {
     getAllMovies()
   }, []);
 
-  if(session === null) return <Login />
-  if(account === null) return <ManageAccount />
-  if(pageLoader) return <Loader />
+  if (session === null) return <Login/>
+  if (account === null) return <ManageAccount/>
+  if (pageLoader) return <Loader/>
 
-  return <Common moviesData={moviesData} />
+  return <Common moviesData={moviesData}/>
 };
 
 export default Page;

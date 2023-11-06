@@ -10,6 +10,7 @@ import {useEffect, useState} from "react";
 import SearchBar from "@/components/shared/navbar/search-bar";
 import {cn} from "@/lib/utils";
 import {useRouter} from "next/navigation";
+import MoviePopup from "@/components/shared/movie/movie-popup";
 
 const Navbar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false)
@@ -64,6 +65,8 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
+
+        <MoviePopup />
 
         <div className={"font-light flex items-center space-x-4 text-sm"}>
           {showSearchBar ? (

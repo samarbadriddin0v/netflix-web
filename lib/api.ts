@@ -38,3 +38,12 @@ export const getMoviesByGenre = async(type: string, id: number) => {
     console.log(e)
   }
 }
+
+export const getMovieDetails = async (type?: string, id?: number) => {
+  try{
+    const {data} = await  axios.get(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`)
+    return data;
+  }catch (e) {
+    console.log(e)
+  }
+}
