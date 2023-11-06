@@ -6,13 +6,31 @@ import {AiOutlineSearch} from "react-icons/ai";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {useGlobalContext} from "@/context";
 import {signOut} from "next-auth/react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SearchBar from "@/components/shared/navbar/search-bar";
+import {cn} from "@/lib/utils";
+import {useRouter} from "next/navigation";
 
 const Navbar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const {account, setAccount} = useGlobalContext()
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, []);
 
   const logout = () => {
     sessionStorage.removeItem("account");
@@ -22,7 +40,7 @@ const Navbar = () => {
 
   return (
     <div className={"relative"}>
-      <header className={"header h-[10vh] hover:bg-black transition-all duration-100"}>
+      <header className={cn("header h-[10vh] hover:bg-black transition-all duration-400 ease-in-out", isScrolled && "bg-black")}>
         <div className={"flex items-center h-full space-x-2 md:space-x-10"}>
           <Image
             src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
@@ -34,6 +52,7 @@ const Navbar = () => {
           <ul className={"hidden md:space-x-4 md:flex cursor-pointer"}>
             {menuItems.map((item) => (
               <li
+                onClick={() => router.push(item.path)}
                 key={item.path}
                 className={"cursor-pointer text-[16px] font-light text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3]"}
               >

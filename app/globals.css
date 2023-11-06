@@ -71,7 +71,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
   }
 }
 
@@ -114,4 +114,15 @@
   100% {
     -webkit-transform: rotate(360deg);
   }
+}
+
+.cardWrapper:hover {
+  background: black;
+}
+
+.cardWrapper:hover .buttonWrapper {
+  display: flex;
+  z-index: 2;
+  width: 100%;
+  justify-content: center;
 }
