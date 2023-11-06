@@ -11,7 +11,7 @@ import {getPopularMovies, getTopratedMovies, getTrendingMovies} from "@/lib/api"
 import {MovieDataProps, MovieProps} from "@/types";
 
 const Page = () => {
-  const [mvoiesData, setMvoiesData] = useState<MovieDataProps[]>([])
+  const [moviesData, setMoviesData] = useState<MovieDataProps[]>([])
 
   const {account, pageLoader, setPageLoader} = useGlobalContext();
   const {data: session} = useSession()
@@ -42,7 +42,7 @@ const Page = () => {
         ].map(item => ({...item, data: item.data.map((movie: MovieProps) => ({...movie, type: "movie", addedToFavorites: false}))}))
 
         const allMovies = [...moviesShows, ...tvShows]
-        setMvoiesData(allMovies)
+        setMoviesData(allMovies)
       }catch (e) {
         console.log(e)
       }finally {
@@ -57,7 +57,7 @@ const Page = () => {
   if(account === null) return <ManageAccount />
   if(pageLoader) return <Loader />
 
-  return <Common mvoiesData={mvoiesData} />
+  return <Common moviesData={moviesData} />
 };
 
 export default Page;
