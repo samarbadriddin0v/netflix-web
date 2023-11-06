@@ -28,13 +28,13 @@ const ManageAccount = () => {
       try {
         const {data} = await axios.get<AccountResponse>(`/api/account?uid=${session.user.uid}`)
         data.success && setAccounts(data.data as AccountProps[]);
-      }catch (e) {
+      } catch (e) {
         return toast({
           title: "Error",
           description: "An error occurred while fetching your accounts",
           variant: "destructive"
         })
-      }finally {
+      } finally {
         setIsLoading(false)
       }
     }
@@ -46,15 +46,15 @@ const ManageAccount = () => {
   const onDelete = async (id: string) => {
     try {
       const isConfirmed = confirm("Are you sure you want to delete this account?")
-      if(isConfirmed) {
-        const {data} = await  axios.delete<AccountResponse>(`/api/account?id=${id}`)
-        if(data.success) {
+      if (isConfirmed) {
+        const {data} = await axios.delete<AccountResponse>(`/api/account?id=${id}`)
+        if (data.success) {
           setAccounts(accounts.filter(account => account._id !== id))
           return toast({
             title: "Account deleted successfully",
             description: "Your account has been deleted successfully",
           })
-        }else {
+        } else {
           return toast({
             title: "Error",
             description: data.message,
@@ -62,7 +62,7 @@ const ManageAccount = () => {
           })
         }
       }
-    }catch (e) {
+    } catch (e) {
       return toast({
         title: "Error",
         description: "An error occurred while deleting your account",
@@ -71,7 +71,7 @@ const ManageAccount = () => {
     }
   }
 
-  if(isLoading) return <Loader />
+  if (isLoading) return <Loader/>
 
   return (
     <div className={"min-h-screen flex justify-center flex-col items-center relative"}>
@@ -86,7 +86,7 @@ const ManageAccount = () => {
                 <li
                   key={account._id}
                   onClick={() => {
-                    if(isDelete) return
+                    if (isDelete) return
                     setOpen(true)
                     setState("login")
                     setCurrentAccount(account)
@@ -94,7 +94,8 @@ const ManageAccount = () => {
                   className={"max-w-[200px] w-[155px] cursor-pointer flex flex-col items-center gap-3 min-w-[200px]"}
                 >
                   <div className="relative">
-                    <div className={"max-w-[200px] rounded min-w-[84px] max-h-[200px] min-h-[84px] object-cover w-[155px] h-[155px] relative"}>
+                    <div
+                      className={"max-w-[200px] rounded min-w-[84px] max-h-[200px] min-h-[84px] object-cover w-[155px] h-[155px] relative"}>
                       <Image
                         src={"https://occ-0-2611-3663.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABfNXUMVXGhnCZwPI1SghnGpmUgqS_J-owMff-jig42xPF7vozQS1ge5xTgPTzH7ttfNYQXnsYs4vrMBaadh4E6RTJMVepojWqOXx.png?r=1d4"}
                         alt={"account"}
@@ -106,13 +107,13 @@ const ManageAccount = () => {
                         className={"absolute transform bottom-0 z-10 cursor-pointer"}
                         onClick={() => onDelete(account._id)}
                       >
-                        <Trash2 className={"w-8 h-8 text-red-600"} />
+                        <Trash2 className={"w-8 h-8 text-red-600"}/>
                       </div>
                     ) : null}
                   </div>
                   <div className={"flex items-center gap-1"}>
                     <span className={"font-mono font-bold text-xl"}>{account.name}</span>
-                    <LockKeyhole />
+                    <LockKeyhole/>
                   </div>
                 </li>
               ))}
@@ -141,7 +142,7 @@ const ManageAccount = () => {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
-          {state === "login" && <LoginAccountForm currentAccount={currentAccount} />}
+          {state === "login" && <LoginAccountForm currentAccount={currentAccount}/>}
           {state === "create" && <CreateAccountForm
               uid={session?.user?.uid}
               setOpen={setOpen}
