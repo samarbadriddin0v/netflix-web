@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import {Provider} from "@/provider";
 import GlobalContext from "@/context";
 import {ReactNode} from "react";
+import {Toaster} from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Provider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <GlobalContext>
             {children}
+            <Toaster />
           </GlobalContext>
         </Provider>
       </body>
