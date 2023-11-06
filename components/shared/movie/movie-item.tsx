@@ -5,6 +5,7 @@ import {motion} from "framer-motion";
 import Image from "next/image";
 import {CheckIcon, ChevronDown, PlusIcon} from "lucide-react";
 import {useGlobalContext} from "@/context";
+import {usePathname, useRouter} from "next/navigation";
 
 interface Props{
   movie: MovieProps
@@ -12,6 +13,9 @@ interface Props{
 
 const MovieItem = ({movie}: Props) => {
   const {setOpen, setMovie} = useGlobalContext()
+
+  const pathname = usePathname()
+  const router = useRouter()
 
   const onHandlerPopup = () => {
     setMovie(movie)
