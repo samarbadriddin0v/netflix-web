@@ -27,11 +27,11 @@ export interface AxiosResponse {
   message?: string
 }
 
-export interface AccountResponse extends AxiosResponse{
+export interface AccountResponse extends AxiosResponse {
   data: AccountProps[] | AccountProps
 }
 
-export interface MenuItemProps{
+export interface MenuItemProps {
   id: string
   title: string
   path: string
@@ -106,4 +106,16 @@ export interface VideoProps {
   site: string;
   size: number;
   type: string;
+}
+
+export interface FavouriteProps {
+  uid: string
+  accountId: string
+  backdrop_path: string
+  poster_path: string
+  movieId: string
+  type: string
+  title: string
+  overview: string
+  _id?: string
 }
