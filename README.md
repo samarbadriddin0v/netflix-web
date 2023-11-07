@@ -10,9 +10,9 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://media.graphassets.com/odmmNyR6Q2e5SVC1SW6P" alt="project-screenshot" width="48%" height="250px/" style="object-fit: cover">
+<img src="https://rb.gy/jzyfpo" alt="project-screenshot" width="48%" height="250px/" style="object-fit: cover">
 
-<img src="https://media.graphassets.com/Fz25PIukSc2LLfk1Qcdx" alt="project-screenshot" width="48%" height="250px/" style="object-fit: cover">
+<img src="https://rb.gy/itz1v2" alt="project-screenshot" width="48%" height="250px/" style="object-fit: cover">
 
 <h2>🧐 Features</h2>
 
