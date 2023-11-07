@@ -33,19 +33,25 @@ const Page = () => {
           {title: "Trending TV Shows", data: trendingTv},
           {title: "Top Rated TV Shows", data: topRatedTv},
           {title: "Popular TV Shows", data: popularTv},
-        ].map(item => ({...item, data: item.data.map((movie: MovieProps) => ({...movie, type: "tv", addedToFavorites: false}))}))
+        ].map(item => ({
+          ...item,
+          data: item.data.map((movie: MovieProps) => ({...movie, type: "tv", addedToFavorites: false}))
+        }))
 
         const moviesShows: MovieDataProps[] = [
           {title: "Trending Movies", data: trendingMovie},
           {title: "Top Rated Movies", data: topRatedMovie},
           {title: "Popular Movies", data: popularMovie},
-        ].map(item => ({...item, data: item.data.map((movie: MovieProps) => ({...movie, type: "movie", addedToFavorites: false}))}))
+        ].map(item => ({
+          ...item,
+          data: item.data.map((movie: MovieProps) => ({...movie, type: "movie", addedToFavorites: false}))
+        }))
 
         const allMovies = [...moviesShows, ...tvShows]
         setMoviesData(allMovies)
-      }catch (e) {
+      } catch (e) {
         console.log(e)
-      }finally {
+      } finally {
         setPageLoader(false)
       }
     }
@@ -53,11 +59,11 @@ const Page = () => {
     getAllMovies()
   }, []);
 
-  if(session === null) return <Login />
-  if(account === null) return <ManageAccount />
-  if(pageLoader) return <Loader />
+  if (session === null) return <Login/>
+  if (account === null) return <ManageAccount/>
+  if (pageLoader) return <Loader/>
 
-  return <Common moviesData={moviesData} />
+  return <Common moviesData={moviesData}/>
 };
 
 export default Page;
