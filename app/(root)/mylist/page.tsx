@@ -100,7 +100,7 @@ const Page = () => {
                       favouriteId={fav?._id}
                       setFavourites={setFavourites}
                     />
-                  )))}
+                  ))).reverse()}
                 </div>
               </div>
             </div>

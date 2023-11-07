@@ -16,6 +16,7 @@ import {AccountProps, AccountResponse} from "@/types";
 import {toast} from "@/components/ui/use-toast";
 import {Loader2} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
+import Link from "next/link";
 
 const Navbar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false)
@@ -75,6 +76,10 @@ const Navbar = () => {
             height={120}
             alt="NETFLIX"
             className="cursor-pointer object-contain"
+            onClick={() => {
+              router.push("/browse")
+              setPageLoader(true)
+            }}
           />
           <ul className={"hidden md:space-x-4 md:flex cursor-pointer"}>
             {menuItems.map((item) => (
