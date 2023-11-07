@@ -79,8 +79,8 @@ const MoviePopup = () => {
               <Skeleton className={"w-1/2 h-4"}/>
 
               <div className="grid mt-5 grid-cols-4 gap-3 items-center scrollbar-hide md:p-2">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((_) => (
-                  <Skeleton className={"w-full h-[150px]"}/>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((_, i) => (
+                  <Skeleton className={"w-full h-[150px]"} key={i} />
                 ))}
               </div>
             </div>
