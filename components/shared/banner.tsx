@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import Image from "next/image";
 import {AiFillPlayCircle} from "react-icons/ai";
 import {IoMdInformationCircleOutline} from "react-icons/io";
+import {useGlobalContext} from "@/context";
 
 interface Props {
   movies: MovieProps[];
@@ -13,10 +14,17 @@ interface Props {
 const Banner = ({movies}: Props) => {
   const [randomMovie, setRandomMovie] = useState<MovieProps | null>(null)
 
+  const {setOpen, setMovie, account} = useGlobalContext()
+
   useEffect(() => {
     const movie = movies[Math.floor(Math.random() * movies.length)]
     setRandomMovie(movie)
   }, [])
+
+  const onHandlerPopup = () => {
+    setMovie(randomMovie)
+    setOpen(true)
+  }
 
   return (
     <div className={"flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12 lg:pl-24"}>
@@ -40,11 +48,15 @@ const Banner = ({movies}: Props) => {
       <div className={"flex space-x-3"}>
         <button
           className="cursor-pointer flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:px-8 md:text-xl bg-white text-black"
+          onClick={onHandlerPopup}
         >
           <AiFillPlayCircle className="h-4 w-4 text-black md:h-7 md:w-7 cursor-pointer" />
           Play
         </button>
-        <button className="cursor-pointer flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:px-8 md:text-xl bg-[gray]/70">
+        <button
+          className="cursor-pointer flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:px-8 md:text-xl bg-[gray]/70"
+          onClick={onHandlerPopup}
+        >
           <IoMdInformationCircleOutline className="h-5 w-5  md:h-8 md:w-8 cursor-pointer" />
           More Info
         </button>
