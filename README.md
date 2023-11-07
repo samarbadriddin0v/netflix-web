@@ -10,9 +10,10 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://media.graphassets.com/Il65xvZRHCtHGYlHB0eb" alt="project-screenshot" width="40%" height="250px/" style="object-fit: cover">
-
-<img src="https://media.graphassets.com/3ajdZlXRsmcG770Fi0A6" alt="project-screenshot" width="40%" height="250px/" style="object-fit: cover">
+<div style="display: flex">
+  <img src="https://media.graphassets.com/Il65xvZRHCtHGYlHB0eb" alt="project-screenshot" width="50%" height="250px/" style="object-fit: cover">
+  <img src="https://media.graphassets.com/3ajdZlXRsmcG770Fi0A6" alt="project-screenshot" width="50%" height="250px/" style="object-fit: cover">
+</div>
 
 <h2>🧐 Features</h2>
 
